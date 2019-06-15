@@ -88,6 +88,7 @@ Java libraries are located in "gradle/libs". Gradle is not used to download them
 * [vertx](https://github.com/vert-x3/vertx-lang-kotlin): Apache License Version 2.0
 * [jansi](https://github.com/fusesource/jansi): Apache License Version 2.0
 * [commons-suncalc](https://github.com/shred/commons-suncalc): Apache License Version 2.0
+* [paho.mqtt.java](https://github.com/eclipse/paho.mqtt.java): Eclipse Public License
 
 
 ### Javascript
