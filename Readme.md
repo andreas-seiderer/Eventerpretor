@@ -26,7 +26,8 @@ Since Kotlin uses the Java VM all libraries available for Java can be integrated
 * crossplatform (tested on Windows and Linux - including Raspbian (ARM))
 
 ## Documentation and Examples
-Is currently located in "docs". Please note that it is not yet complete!
+The documentation is located in "docs". An introduction can be found in this [PDF](docs/Introduction.pdf). Please note that the documentation is currently incomplete!
+
 Several examples can be found in "examples". Further examples will be added!
 
 ## Nodes
