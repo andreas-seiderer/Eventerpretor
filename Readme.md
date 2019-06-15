@@ -31,7 +31,7 @@ Several examples can be found in "examples". Further examples will be added!
 
 ## Nodes
 Pipelines can contain three different types of processing nodes: "input", "transform", "output". 
-Please note that the TransformNode "TransformGroovy" is a special node since every available in Java command or a function from the included libraries can be used!
+Please note that the TransformNode "TransformGroovy" is a special node since every Java command or function from an included library can be used!
 
 A list of currently available nodes is given in the following:
 
