@@ -87,6 +87,7 @@ Java libraries are located in "gradle/libs". Gradle is not used to download them
 * [sqlite-jdbc](https://github.com/xerial/sqlite-jdbc): Apache License Version 2.0
 * [vertx](https://github.com/vert-x3/vertx-lang-kotlin): Apache License Version 2.0
 * [jansi](https://github.com/fusesource/jansi): Apache License Version 2.0
+* [commons-suncalc](https://github.com/shred/commons-suncalc): Apache License Version 2.0
 
 
 ### Javascript
