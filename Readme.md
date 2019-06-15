@@ -78,6 +78,7 @@ Not all dependencies (of dependencies) are included here. Please visit the websi
 ### Java
 Java libraries are located in "gradle/libs". Gradle is not used to download them!
 
+* [Kotlin](https://github.com/JetBrains/kotlin): Apache License Version 2.0
 * [Drools](https://github.com/kiegroup/drools): Apache License Version 2.0
 * [Groovy](https://github.com/apache/groovy): Apache License Version 2.0
 * [ical4j](https://github.com/ical4j/ical4j): BSD-3-Clause
