@@ -30,6 +30,11 @@ The documentation is located in "docs". An introduction can be found in this [PD
 
 Several examples can be found in "examples". Further examples will be added!
 
+## Building
+An installed version of gradle and Java JDK 8 is required. With the console you just have to type in "gradle build" in the "gradle" directory of this repository.
+
+Another option is to use IntellJ Idea where you can import the gradle project.
+
 ## Nodes
 Pipelines can contain three different types of processing nodes: "input", "transform", "output". 
 Please note that the TransformNode "TransformGroovy" is a special node since every Java command or function from an included library can be used!
