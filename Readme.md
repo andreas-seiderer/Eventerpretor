@@ -15,7 +15,7 @@ Since Kotlin uses the Java VM all libraries available for Java can be integrated
 * This software is not intended to provide the same functionality as Node-RED or other flow-based frameworks!
 
 ## General Features
-* Complex Event Processor written in Kotlin
+* lightweight Complex Event Processor written in Kotlin
 * threadsafe data transport between threaded nodes
 * functions for easier prototyping
 * low memory consumption (limited by Java's garbage collector)
