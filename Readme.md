@@ -93,6 +93,6 @@ Java libraries are located in "gradle/libs". Gradle is not used to download them
 * [vertx-eventbus](http://vertx.io/): Eclipse Public License and Apache License 2.0
 
 
-## Usage
+## Usage in literature
 Parts of this software have been used in the following scientific publication as a part of the prototype:
 * Hannes Ritschel, Andreas Seiderer, Kathrin Janowski, Ilhan Aslan, and Elisabeth André. 2018. Drink-O-Mender: An Adaptive Robotic Drink Adviser. In Proceedings of the 3rd International Workshop on Multisensory Approaches to Human-Food Interaction (MHFI'18). ACM, New York, NY, USA, Article 3, 8 pages. DOI: https://doi.org/10.1145/3279954.3279957 
