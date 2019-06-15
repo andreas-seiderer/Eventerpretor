@@ -33,7 +33,14 @@ Several examples can be found in "examples". Further examples will be added!
 ## Building
 An installed version of gradle and Java JDK 8 is required. With the console you just have to type in "gradle build" in the "gradle" directory of this repository.
 
-Another option is to use IntellJ Idea where you can import the gradle project.
+Another option is to use IntelliJ Idea where you can import the gradle project and use the "gradle [build]" task.
+
+## Running pipelines
+### with gradle
+With installed gradle and Java JDK 8 you can directly run the examples from console. Enter the gradle directory of this repository and run ```gradle run --args="main_timer2stdout.groovy ../examples/basic 0"```.
+
+### with IntelliJ Idea
+After importing the project in the gradle directory you can set up IntelliJ Idea to run the program by choosing the run task. You have to edit it so that arguments are passed to Eventerpretor by setting "Arguments" to ```run --args="main_timer2stdout.groovy ../examples/basic 0"``` in the "gradle [run]" configuration dialog.
 
 ## Nodes
 Pipelines can contain three different types of processing nodes: "input", "transform", "output". 
