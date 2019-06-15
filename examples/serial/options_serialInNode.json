@@ -1,0 +1,37 @@
+{
+  "newline": {
+    "value": "\\r\\n",
+    "help": "new line char(s)",
+    "class": "class java.lang.String"
+  },
+  "baudrate": {
+    "value": 115200,
+    "help": "serial port baudrate",
+    "class": "class java.lang.Integer"
+  },
+  "sendOnBegin": {
+    "value": "",
+    "help": "send string to device at beginning",
+    "class": "class java.lang.String"
+  },
+  "port": {
+    "value": "COM17",
+    "help": "serial port name",
+    "class": "class java.lang.String"
+  },
+  "sendOnEnd": {
+    "value": "",
+    "help": "send string to device at end",
+    "class": "class java.lang.String"
+  },
+  "isBinary": {
+    "value": false,
+    "help": "binary or ascii data?",
+    "class": "class java.lang.Boolean"
+  },
+  "bytesToRead": {
+    "value": 0,
+    "help": "how many bytes should be read at once in binaryMode?",
+    "class": "class java.lang.Integer"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "interval": {
+    "value": 1000,
+    "help": "interval in milliseconds",
+    "class": "class java.lang.Integer"
+  }
+}

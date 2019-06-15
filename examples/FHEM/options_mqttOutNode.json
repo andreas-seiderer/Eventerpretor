@@ -1,0 +1,37 @@
+{
+  "password": {
+    "value": "password",
+    "help": "password if username is set",
+    "class": "class java.lang.String"
+  },
+  "clientId": {
+    "value": "Eventerpretor",
+    "help": "id of the client",
+    "class": "class java.lang.String"
+  },
+  "qos": {
+    "value": 0,
+    "help": "qos: 0, 1 or 2",
+    "class": "class java.lang.Integer"
+  },
+  "certificate": {
+    "value": "",
+    "help": "path to certificate file; disabled if set to empty string",
+    "class": "class java.lang.String"
+  },
+  "topic": {
+    "value": "/FHEM",
+    "help": "topic to publish to",
+    "class": "class java.lang.String"
+  },
+  "broker": {
+    "value": "tcp://localhost:1883",
+    "help": "broker string",
+    "class": "class java.lang.String"
+  },
+  "username": {
+    "value": "username",
+    "help": "username for user authentication; disabled with empty string",
+    "class": "class java.lang.String"
+  }
+}

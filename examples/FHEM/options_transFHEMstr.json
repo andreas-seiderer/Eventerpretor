@@ -1,0 +1,7 @@
+{
+  "telnetmode": {
+    "value": true,
+    "help": "switch on if using the InTCP node for telnet connection to FHEM",
+    "class": "class java.lang.Boolean"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "delimiter": {
+    "value": ";",
+    "help": "split input stringa with this delimiter",
+    "class": "class java.lang.String"
+  }
+}

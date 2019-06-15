@@ -1,0 +1,12 @@
+{
+  "printDropped": {
+    "value": true,
+    "help": "print dropped values to console as warning",
+    "class": "class java.lang.Boolean"
+  },
+  "classname": {
+    "value": "kotlin.DoubleArray",
+    "help": "just output values of this datatype(s); separate with ;",
+    "class": "class java.lang.String"
+  }
+}

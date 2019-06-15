@@ -1,0 +1,12 @@
+{
+  "path": {
+    "value": "groovy_scripts/",
+    "help": "path to groovy script",
+    "class": "class java.lang.String"
+  },
+  "filename": {
+    "value": "groovyTrans1.groovy",
+    "help": "file name of groovy script",
+    "class": "class java.lang.String"
+  }
+}

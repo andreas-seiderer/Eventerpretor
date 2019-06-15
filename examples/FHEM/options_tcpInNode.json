@@ -1,0 +1,22 @@
+{
+  "password": {
+    "value": "",
+    "help": "password, leave empty if there is none",
+    "class": "class java.lang.String"
+  },
+  "sendOnBegin": {
+    "value": "inform timer\r\n",
+    "help": "command to send at start",
+    "class": "class java.lang.String"
+  },
+  "port": {
+    "value": 7072,
+    "help": "port of server",
+    "class": "class java.lang.Integer"
+  },
+  "ip": {
+    "value": "localhost",
+    "help": "ip address of server",
+    "class": "class java.lang.String"
+  }
+}
