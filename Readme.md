@@ -1,11 +1,13 @@
 ## Description
-Eventerpretor is an open-source node-based Complex Event Processor (CEP) written in Kotlin. It is intended to process discrete events which arrive sporadically or at low sample rates. Each processing node uses an own thread and all nodes can be connected together as pipelines. It is possible to run multiple pipelines in one instance. All nodes are connected with each other by passing data into "LinkedBlockingQueues" so that the nodes are not active until new data arrives. 
+Eventerpretor is an open-source node-based, lightweight Complex Event Processor (CEP) written in Kotlin. It is intended to process discrete events which arrive sporadically or at low sample rates. Each processing node uses an own thread and all nodes can be connected together as pipelines. It is possible to run multiple pipelines in one instance. All nodes are connected with each other by passing data into "LinkedBlockingQueues" so that the nodes are not active until new data arrives. 
 
-Eventerpretor was especially created to process and interpret data from home automation software like FHEM. It can be used independently of a specific software solution but can also combine the data of different data sources. Additionally, due to the integration of MQTT, generic serial port communication and TCP data input it is able to directly access specific sensors and software.
+Eventerpretor was especially created to process and interpret data from home automation software like [FHEM](https://fhem.de/). It can be used independently of a specific software solution but can also combine the data of different data sources. Additionally, due to the integration of MQTT, generic serial port communication and TCP data input it is able to directly access specific sensors and software.
 
 To allow faster prototyping Eventerpretor includes the possibility to use webbased user interfaces for data input and visualizations which are connected via websockets to be able to receive or transmit data from or to other nodes. Another feature allows recording of received messages e.g. from a home automation software that can be replayed with the recorded delays between the original events to allow more realistic testing of pipelines.
-Eventerpretor is focused on running headless. A webbased GUI exists to gently stop a pipeline, graphically show current pipelines and restart specific nodes to load new settings without the need to restart the whole program.
+
+Eventerpretor is focused on running headless. A webbased GUI exists to gently stop a pipeline, graphically show current pipelines (read only) and restart specific nodes to load new settings without the need to restart the whole program.
 Pipelines are defined in Groovy scripts where nodes can be connected. Settings are automatically created and saved as json files. They can be adapted by the user with a text editor.
+
 Since Kotlin uses the Java VM all libraries available for Java can be integrated.
 
 ## Limitations
