@@ -37,8 +37,8 @@ A list of currently available nodes is given in the following:
 
 ### Input
 * InCalDavEvent
-* InFile
-* InMQTT
+* [InFile](docs/plugins/InFile.md)
+* [InMQTT](docs/plugins/InMQTT.md)
 * InPgsqlListen
 * InPgsqlSensorListen
 * InSerial
@@ -68,7 +68,7 @@ A list of currently available nodes is given in the following:
 * OutPgsqlNotify
 * OutSerial
 * OutSqliteAutoDataInsert
-* OutSTDOUT
+* [OutSTDOUT](docs/plugins/OutSTDOUT.md)
 * OutTCP
 * OutWebVis
 
