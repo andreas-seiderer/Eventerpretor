@@ -20,7 +20,7 @@ Since Kotlin uses the Java VM all libraries available for Java can be integrated
 * functions for easier prototyping
 * low memory consumption (limited by Java's garbage collector)
 * low CPU usage: near to zero if there is no data to process
-* stand-alone deployment (just Java 8 is required)
+* easy stand-alone deployment (just Java 8 is required)
 * postgresql can be used as data storage but also for asynchronous communication and window based data processing
 * secure MQTT and Postgresql connections with certificate pinning are possible
 * crossplatform (tested on Windows and Linux - including Raspbian (ARM))
