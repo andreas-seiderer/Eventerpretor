@@ -1,24 +1,30 @@
 package de.seiderer.eventerpretor.plugins.transform
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import de.seiderer.eventerpretor.core.Engine
+import de.seiderer.eventerpretor.drools.Command
 import de.seiderer.eventerpretor.plugins.base.TransformNode
 import java.io.File
+import java.util.HashMap
 import java.util.concurrent.TimeUnit
 import kotlin.properties.Delegates
 
 /**
  *  @author Andreas Seiderer
- *  Just allow new values to pass
+ *  Convert String in JSON format to hashmap
  */
-class TransformPassOnChange(engine: Engine, name:String) : TransformNode(engine,name,0) {
+class TransformJSONtoMAP(engine: Engine, name:String) : TransformNode(engine,name,0) {
+    val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
 
-    private var oldval: Any by Delegates.notNull()
+    val issueAdapter = moshi.adapter(Map::class.java)
 
     override fun setConfig() {
     }
 
     override fun start() {
-        oldval = 0
     }
 
     override fun stop() {
@@ -32,10 +38,16 @@ class TransformPassOnChange(engine: Engine, name:String) : TransformNode(engine,
     override fun threadedTask() {
         val value = indata.poll(1000, TimeUnit.MILLISECONDS)
         if (value != null) {
-            if (value.value != oldval) {
-                dataOut(value.value)
-                oldval = value.value
+            var message = ""
+            if (value.value is String) {
+                message = value.value
+            } else if (value.value is Command) {
+                message = value.value.value
             }
+            val json = issueAdapter.fromJson(message)
+            val jsonhm = HashMap<Any, Any>(json)
+
+            dataOut(jsonhm)
         }
     }
 }

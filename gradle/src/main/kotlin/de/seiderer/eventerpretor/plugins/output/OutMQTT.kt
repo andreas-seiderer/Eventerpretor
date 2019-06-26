@@ -39,6 +39,7 @@ class OutMQTT(engine: Engine, name:String) : OutNode(engine,name,0) {
             opts.add("username", "username", "username for user authentication; disabled with empty string")
             opts.add("password", "password", "password if username is set")
             opts.add("certificate", "", "path to certificate file; disabled if set to empty string")
+            opts.add("topicFromData", false, "true: provide the topic in the data input via \"topic\"; false: use the option \"topic\" for all messages")
 
             opts.toJsonFile(path)
         }
@@ -75,6 +76,7 @@ class OutMQTT(engine: Engine, name:String) : OutNode(engine,name,0) {
         val value = indata.poll(1000, TimeUnit.MILLISECONDS)
         if (value != null) {
             var messageStr : String by Delegates.notNull()
+            var topicStr: String? = null
 
             if (value.value is String)
                 messageStr = value.value
@@ -83,6 +85,12 @@ class OutMQTT(engine: Engine, name:String) : OutNode(engine,name,0) {
                 val valstr = value.value["message"]
                 if (valstr is String)
                     messageStr = valstr
+
+                if (value.value.containsKey("topic") && opts.getBoolVal("topicFromData")) {
+                    val topic = value.value["topic"]
+                    if (topic is String)
+                        topicStr = topic
+                }
             }
 
             if (value.value is Number)
@@ -91,7 +99,13 @@ class OutMQTT(engine: Engine, name:String) : OutNode(engine,name,0) {
             if (mqttClient.isConnected) {
                 val message = MqttMessage(messageStr.toByteArray())
                 message.qos = opts.getIntVal("qos")
-                mqttClient.publish(opts.getStringVal("topic"), message)
+
+
+                if (topicStr == null) {
+                    topicStr = opts.getStringVal("topic")
+                }
+
+                mqttClient.publish(topicStr, message)
             }
 
         }

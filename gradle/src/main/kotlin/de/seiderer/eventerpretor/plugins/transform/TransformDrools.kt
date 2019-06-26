@@ -168,6 +168,10 @@ class TransformDrools(engine: Engine, name:String) : TransformNode(engine,name,0
                         val valmsg = value.value["message"]
                         if (valmsg != null)
                             msg = valmsg
+                    } else if (value.value.containsKey("reading")) {
+                        val valmsg = value.value["reading"]
+                            if (valmsg != null)
+                                msg = valmsg
                     }
 
 
