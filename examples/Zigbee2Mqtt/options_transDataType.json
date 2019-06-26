@@ -1,0 +1,12 @@
+{
+  "printDropped": {
+    "value": false,
+    "help": "print dropped values to console as warning",
+    "class": "class java.lang.Boolean"
+  },
+  "classname": {
+    "value": "de.seiderer.eventerpretor.drools.Command",
+    "help": "just output values of this datatype(s); separate with ;",
+    "class": "class java.lang.String"
+  }
+}

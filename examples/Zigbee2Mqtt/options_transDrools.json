@@ -1,0 +1,22 @@
+{
+  "sensors": {
+    "value": {
+      "Bath_Switch": {
+        "readingname": "action",
+        "sensorname": "Bath_Switch",
+        "sensortype": "switch",
+        "positionname": "bath",
+        "positiontype": "room",
+        "provider": "zigbee2mqtt",
+        "isNumeric": false
+	}
+    },
+    "help": "hash map of sensor names as key that should be adapted with data given in value",
+    "class": "class java.util.HashMap"
+  },
+  "filenamerules": {
+    "value": "rules.drl",
+    "help": "file name of drools rule file relative to working directory",
+    "class": "class java.lang.String"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "sensors": {
+    "value": {
+       "0x123456789": {
+        "readingname": ["action"],
+	"readingreplace": ["<original>"],
+        "sensorname": "Bath_Switch",
+        "sensortype": "switch",
+        "positionname": "bath",
+        "positiontype": "room",
+        "provider": "zigbee2mqtt"
+      }
+    },
+    "help": "hash map pf sensor names as key that should be adapted with data given in value",
+    "class": "class java.util.HashMap"
+  }
+}

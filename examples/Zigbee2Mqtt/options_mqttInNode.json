@@ -1,0 +1,34 @@
+{
+  "password": {
+    "value": "password",
+    "help": "password if username is set",
+    "class": "class java.lang.String"
+  },
+  "clientId": {
+    "value": "Eventerpretor",
+    "help": "id of the client",
+    "class": "class java.lang.String"
+  },
+  "topics": {
+    "value": [
+      "zigbee2mqtt/0x123456789"
+    ],
+    "help": "topics to subscribe to",
+    "class": "class [Ljava.lang.String;"
+  },
+  "certificate": {
+    "value": "",
+    "help": "path to certificate file; disabled if set to empty string",
+    "class": "class java.lang.String"
+  },
+  "broker": {
+    "value": "tcp://localhost:1883",
+    "help": "broker string",
+    "class": "class java.lang.String"
+  },
+  "username": {
+    "value": "username",
+    "help": "username for user authentication; disabled with empty string",
+    "class": "class java.lang.String"
+  }
+}

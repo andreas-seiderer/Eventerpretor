@@ -1,0 +1,42 @@
+{
+  "password": {
+    "value": "password",
+    "help": "password if username is set",
+    "class": "class java.lang.String"
+  },
+  "clientId": {
+    "value": "EventerpretorOut",
+    "help": "id of the client; has to be unique to prevent strange behavior!",
+    "class": "class java.lang.String"
+  },
+  "qos": {
+    "value": 0,
+    "help": "qos: 0, 1 or 2",
+    "class": "class java.lang.Integer"
+  },
+  "certificate": {
+    "value": "",
+    "help": "path to certificate file; disabled if set to empty string",
+    "class": "class java.lang.String"
+  },
+  "topic": {
+    "value": "/CO2mon/CO2",
+    "help": "topic to publish to",
+    "class": "class java.lang.String"
+  },
+  "broker": {
+    "value": "tcp://localhost:1883",
+    "help": "broker string",
+    "class": "class java.lang.String"
+  },
+  "topicFromData": {
+    "value": true,
+    "help": "true: provide the topic in the data input via \"topic\"; false: use the option \"topic\" for all messages",
+    "class": "class java.lang.Boolean"
+  },
+  "username": {
+    "value": "username",
+    "help": "username for user authentication; disabled with empty string",
+    "class": "class java.lang.String"
+  }
+}

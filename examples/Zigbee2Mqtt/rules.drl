@@ -1,0 +1,34 @@
+/*
+ * (c)2019 Andreas Seiderer
+*/
+
+package de.seiderer.eventerpretor.drools;
+
+import de.seiderer.eventerpretor.drools.Sensor;
+import de.seiderer.eventerpretor.drools.ContextElement;
+
+
+rule PrintSensor when
+    c : Sensor()
+then
+    System.out.println( "sensor: " + c.getSensorname() + ": " + c.getValue() );
+end
+
+
+rule PrintContextElement when
+    c : ContextElement()
+then
+    System.out.println( "contextel: " + c.getName() + ": " + c.getValue() );
+end
+
+
+rule SwitchStateBath when
+	s: Sensor(sensorname=="Bath_Switch" && value!= null)
+	if(s.getValue().equals("on-press")) do[on]
+	if(s.getValue().equals("off-press")) do[off]
+then
+then[on]
+	insertLogical( new Command("{\"message\":\"{\\\"state\\\":\\\"on\\\"}\", \"topic\":\"zigbee2mqtt/0x222222222/set\"}"));
+then[off]
+	insertLogical( new Command("{\"message\":\"{\\\"state\\\":\\\"off\\\"}\", \"topic\":\"zigbee2mqtt/0x222222222/set\"}"));
+end
