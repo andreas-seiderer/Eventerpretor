@@ -68,11 +68,13 @@ A list of currently available nodes is given in the following:
 * TransformDrools
 * TransformFHEMstring
 * TransformGroovy
+* TransformJSONtoMAP
 * TransformMvgFunc
 * TransformPassOnChange
 * TransformSampleRate
 * TransformSensorModel
 * TransformSplitToArray
+* TransformZigbee2Mqttstring
 
 ### Output
 * OutFile
