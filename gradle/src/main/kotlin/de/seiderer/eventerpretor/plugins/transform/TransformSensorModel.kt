@@ -52,6 +52,10 @@ class TransformSensorModel(engine: Engine, name:String) : TransformNode(engine,n
                         reading = v.toDouble()
                     else
                         reading = v
+                else if (v is Boolean)
+                    reading = v.toString()
+                else if (v is Double)
+                    reading = v
 
                 val entry = sensorHashmap[sensorname]
 
