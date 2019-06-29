@@ -37,6 +37,8 @@ class TransformSensorModel(engine: Engine, name:String) : TransformNode(engine,n
 
             if (value.value is java.util.HashMap<*, *>) {
 
+                val valc = value.value as HashMap<String,Any?>
+
                 var sensorname = ""
                 var reading : Any = ""
 
@@ -64,19 +66,19 @@ class TransformSensorModel(engine: Engine, name:String) : TransformNode(engine,n
                     var pos = 0
 
                     //search for readingname in entry list
-                    while(entry.readingname[pos] != value.value["readingname"] && pos < entry.readingname.size-1) {
+                    while(entry.readingname[pos] != valc["readingname"] && pos < entry.readingname.size-1) {
                         pos++
                     }
 
                     //if readingname not found skip
-                    if (entry.readingname[pos] != value.value["readingname"])
+                    if (entry.readingname[pos] != valc["readingname"])
                         return
 
                     var readingname = entry.readingreplace[pos]
 
                     //if readingname is left blank then use original readingname
                     if (entry.readingreplace[pos] == "<original>") {
-                        val valreadingname = value.value["readingname"]
+                        val valreadingname = valc["readingname"]
                         if (valreadingname is String)
                             readingname = entry.readingname[pos]
                     }
@@ -112,6 +114,8 @@ class TransformSensorModel(engine: Engine, name:String) : TransformNode(engine,n
             if (optsensormap is Map<*,*>) {
                 for ((key, value) in optsensormap) {
                     if (key is String && value is Map<*,*>) {
+                        val valc = value as Map<String,Any?>
+
                         var readingname = listOf("")
                         var readingreplace = listOf("")
                         var sensorname = ""
@@ -120,31 +124,31 @@ class TransformSensorModel(engine: Engine, name:String) : TransformNode(engine,n
                         var positiontype = ""
                         var provider = ""
 
-                        var v = value["readingname"]
+                        var v = valc["readingname"]
                         if (v is ArrayList<*>)
                             readingname = v.filterIsInstance<String>()
 
-                        v = value["readingreplace"]
+                        v = valc["readingreplace"]
                         if (v is ArrayList<*>)
                             readingreplace = v.filterIsInstance<String>()
 
-                        v = value["sensorname"]
+                        v = valc["sensorname"]
                         if (v is String)
                             sensorname = v
 
-                        v = value["sensortype"]
+                        v = valc["sensortype"]
                         if (v is String)
                             sensortype = v
 
-                        v = value["positionname"]
+                        v = valc["positionname"]
                         if (v is String)
                             positionname = v
 
-                        v = value["positiontype"]
+                        v = valc["positiontype"]
                         if (v is String)
                             positiontype = v
 
-                        v = value["provider"]
+                        v = valc["provider"]
                         if (v is String)
                             provider = v
 

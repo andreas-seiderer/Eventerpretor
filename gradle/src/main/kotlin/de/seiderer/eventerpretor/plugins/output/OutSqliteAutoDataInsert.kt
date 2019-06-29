@@ -36,11 +36,13 @@ class OutSqliteAutoDataInsert(engine: Engine, name:String) : OutNode(engine,name
 
                 //check if sensor table exists -> if not create
 
-                val sensorname = value.value["sensorname"]
-                val sensortype = value.value["sensortype"]
-                val positionname = value.value["positionname"]
-                val positiontype = value.value["positiontype"]
-                val provider = value.value["provider"]
+                val valc = value.value as HashMap<String,Any?>
+
+                val sensorname = valc["sensorname"]
+                val sensortype = valc["sensortype"]
+                val positionname = valc["positionname"]
+                val positiontype = valc["positiontype"]
+                val provider = valc["provider"]
 
                 var _id_sensor : Long = -1
 
@@ -99,11 +101,11 @@ class OutSqliteAutoDataInsert(engine: Engine, name:String) : OutNode(engine,name
                                 "reading_str TEXT, " +
                                 "reading_num REAL, " +
                                 "_id_sensor INTEGER, " +
-                                "foreign key(_id_sensor) REFERENCES sensors(_id))", value.value["sensorname"])
+                                "foreign key(_id_sensor) REFERENCES sensors(_id))", valc["sensorname"])
                         prep = dbConnection.prepareStatement(query)
                         prep.executeUpdate()
 
-                        query = String.format("CREATE INDEX IF NOT EXISTS \"IDX_%s\" ON \"%s\"(timestamp);", value.value["sensorname"], value.value["sensorname"])
+                        query = String.format("CREATE INDEX IF NOT EXISTS \"IDX_%s\" ON \"%s\"(timestamp);", valc["sensorname"], valc["sensorname"])
                         prep = dbConnection.prepareStatement(query)
                         prep.executeUpdate()
 
@@ -116,18 +118,18 @@ class OutSqliteAutoDataInsert(engine: Engine, name:String) : OutNode(engine,name
                         "readingname, " +
                         "reading_str, " +
                         "reading_num, " +
-                        "_id_sensor) values" + "(?,?,?,?,?)", value.value["sensorname"])
+                        "_id_sensor) values" + "(?,?,?,?,?)", valc["sensorname"])
 
                 val preparedStatement = dbConnection.prepareStatement(query)
 
                 preparedStatement.setTimestamp(1, Timestamp(value.timestamp.time))
 
-                val readingname = value.value["readingname"]
+                val readingname = valc["readingname"]
                 if (readingname is String)
                     preparedStatement.setString(2, readingname)
 
                 //reading can not just be of type String!
-                val reading = value.value["reading"]
+                val reading = valc["reading"]
                 if (reading is String)
                     preparedStatement.setString(3, reading)
                 else

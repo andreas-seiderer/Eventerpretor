@@ -48,6 +48,8 @@ class TransformDrools(engine: Engine, name:String) : TransformNode(engine,name,0
             if (optsensormap is Map<*,*>) {
                 for ((key, value) in optsensormap) {
                     if (key is String && value is Map<*,*>) {
+                        val valc = value as Map<String,Any?>
+
                         var readingname = ""
                         var sensorname = ""
                         var sensortype = ""
@@ -56,31 +58,31 @@ class TransformDrools(engine: Engine, name:String) : TransformNode(engine,name,0
                         var provider = ""
                         var isNumeric = true
 
-                        var v = value["readingname"]
+                        var v = valc["readingname"]
                         if (v is String)
                             readingname = v
 
-                        v = value["sensorname"]
+                        v = valc["sensorname"]
                         if (v is String)
                             sensorname = v
 
-                        v = value["sensortype"]
+                        v = valc["sensortype"]
                         if (v is String)
                             sensortype = v
 
-                        v = value["positionname"]
+                        v = valc["positionname"]
                         if (v is String)
                             positionname = v
 
-                        v = value["positiontype"]
+                        v = valc["positiontype"]
                         if (v is String)
                             positiontype = v
 
-                        v = value["provider"]
+                        v = valc["provider"]
                         if (v is String)
                             provider = v
 
-                        v = value["isNumeric"]
+                        v = valc["isNumeric"]
                         if (v is Boolean)
                             isNumeric = v
 
@@ -150,13 +152,15 @@ class TransformDrools(engine: Engine, name:String) : TransformNode(engine,name,0
 
             if (value.value is HashMap<*, *>) {
 
+                val valc = value.value as HashMap<String,Any?>
+
                 var key = ""
-                if (value.value.containsKey("channelName")) {
-                    val str = value.value["channelName"]
+                if (valc.containsKey("channelName")) {
+                    val str = valc["channelName"]
                     if (str is String)
                         key = str
-                } else if (value.value.containsKey("sensorname")) {
-                    val str = value.value["sensorname"]
+                } else if (valc.containsKey("sensorname")) {
+                    val str = valc["sensorname"]
                     if (str is String)
                         key = str
                 }
@@ -164,12 +168,12 @@ class TransformDrools(engine: Engine, name:String) : TransformNode(engine,name,0
                 if (sensorHashmap.containsKey(key)) {
 
                     var msg : Any by Delegates.notNull()
-                    if (value.value.containsKey("message")) {
-                        val valmsg = value.value["message"]
+                    if (valc.containsKey("message")) {
+                        val valmsg = valc["message"]
                         if (valmsg != null)
                             msg = valmsg
-                    } else if (value.value.containsKey("reading")) {
-                        val valmsg = value.value["reading"]
+                    } else if (valc.containsKey("reading")) {
+                        val valmsg = valc["reading"]
                             if (valmsg != null)
                                 msg = valmsg
                     }

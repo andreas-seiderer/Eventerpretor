@@ -52,7 +52,7 @@ class TransformAllowMsgRegex(engine: Engine, name:String) : TransformNode(engine
 
                 dataOut(invalue)
             } else if (value.value is HashMap<*,*> ) {
-                val hashvalue = value.value
+                val hashvalue = value.value as HashMap<String,Any?>
                 if (hashvalue.containsKey("message")) {
                     val hashvalueStr = hashvalue["message"]
                     if (hashvalueStr is String )

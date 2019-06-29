@@ -105,8 +105,11 @@ class OutSerial(engine: Engine, name:String) : OutNode(engine,name,0) {
                 port.writeBytes(bytesToSend, bytesToSend.size.toLong())
 
             } else if (value.value is HashMap<*,*>) {
-                if (value.value.containsKey("message")) {
-                    val msg = value.value["message"]
+
+                val valc = value.value as HashMap<String,Any?>
+
+                if (valc.containsKey("message")) {
+                    val msg = valc["message"]
                     if (msg is String) {
                         var bytesToSend = msg
 

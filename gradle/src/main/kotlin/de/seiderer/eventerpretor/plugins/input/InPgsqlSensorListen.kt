@@ -41,24 +41,25 @@ class InPgsqlSensorListen(engine: Engine, name:String) : InNode(engine,name,0) {
                         var dbSensorReadingAggFunc = ""
                         var dbSensorReadingAggSec = 0
 
+                        val valuec = value as Map<String, Any?>
 
-                        var v = value["dbSensorName"]
+                        var v = valuec["dbSensorName"]
                         if (v is String)
                             dbSensorName = v
 
-                        v = value["dbSensorReading"]
+                        v = valuec["dbSensorReading"]
                         if (v is String)
                             dbSensorReading = v
 
-                        v = value["dbSensorReadingIsNum"]
+                        v = valuec["dbSensorReadingIsNum"]
                         if (v is Boolean)
                             dbSensorReadingIsNum = v
 
-                        v = value["dbSensorReadingAggFunc"]
+                        v = valuec["dbSensorReadingAggFunc"]
                         if (v is String)
                             dbSensorReadingAggFunc = v
 
-                        v = value["dbSensorReadingAggSec"]
+                        v = valuec["dbSensorReadingAggSec"]
                         if (v is Double)
                             dbSensorReadingAggSec = v.toInt()
 

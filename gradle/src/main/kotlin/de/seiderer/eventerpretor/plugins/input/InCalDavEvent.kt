@@ -74,13 +74,13 @@ class InCalDavEvent(engine: Engine, name:String) : InNode(engine,name,100) {
 
     override fun threadedTask() {
         for(cal in calCollections) {
-            val calArr = opts.getArrVal("calendars")
+            val calArr = opts.getArrVal("calendars") as ArrayList<String>
 
-            if (calArr != null && calArr.size > 1 && calArr.contains(cal.displayName))
+            if (calArr.size > 1 && calArr.contains(cal.displayName))
                 engine.warning("Calendar not found!", "InCalDavEvent")
 
 
-            if ((calArr != null && calArr.contains(cal.displayName)) || (calArr != null && calArr.size == 0)) {
+            if ((calArr.contains(cal.displayName)) || (calArr.size == 0)) {
 
                 for (event in cal.events) {
                     val events = event.getComponents<VEvent>(Component.VEVENT)

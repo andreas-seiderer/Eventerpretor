@@ -87,9 +87,11 @@ class Options {
                 if (key is String)
                     if (value is Map<*,*>) {
 
-                        val prop_value = value["value"]
-                        val prop_help = value["help"]
-                        val prop_class = value["class"]
+                        val v = value as Map<String, Any?>
+
+                        val prop_value = v["value"]
+                        val prop_help = v["help"]
+                        val prop_class = v["class"]
 
                         if (prop_value != null && prop_help != null && prop_class != null)
                             options.put(key, hashMapOf("value" to prop_value, "help" to prop_help, "class" to prop_class))

@@ -24,76 +24,93 @@ class TransformFHEMstring(engine: Engine, name:String) : TransformNode(engine,na
         if (value != null) {
 
             //is from mqtt; && value.value["topic"] is String
-            if (value.value is HashMap<*,*> && value.value["message"] is String) {
-                var msg = value.value["message"]
+            if (value.value is HashMap<*,*>) {
 
-                if (msg is String) {
-                    //remove double space
-                    msg = msg.replace("  ", " ")
+                val valc = value.value as HashMap<String,Any?>
 
-                    var stringEles: List<String>
+                if(valc["message"] is String) {
+                    var msg = valc["message"]
 
-                    if (opts.getBoolVal("telnetmode")) {
-                        //example : 2019-01-15 23:02:07 MQTT mqttClient connection: active
-                        stringEles = msg.split(" ")
-                        stringEles = listOf(stringEles[2], stringEles[3], stringEles.subList(4, stringEles.size).joinToString(" "))
-                    } else {
-                        //example from MQTT: CUL_HM;PlugM03_Pwr;power: 16.75
-                        stringEles = msg.split(";")
-                    }
+                    if (msg is String) {
+                        //remove double space
+                        msg = msg.replace("  ", " ")
 
-                    if (stringEles.size < 3) {
-                        engine.warning("Skipped msg: " + msg, this.nodename)
-                        return
-                    }
+                        var stringEles: List<String>
 
-                    val sensordevice = stringEles[0]
-                    val sensorname = stringEles[1]
+                        if (opts.getBoolVal("telnetmode")) {
+                            //example : 2019-01-15 23:02:07 MQTT mqttClient connection: active
+                            stringEles = msg.split(" ")
+                            stringEles = listOf(
+                                stringEles[2],
+                                stringEles[3],
+                                stringEles.subList(4, stringEles.size).joinToString(" ")
+                            )
+                        } else {
+                            //example from MQTT: CUL_HM;PlugM03_Pwr;power: 16.75
+                            stringEles = msg.split(";")
+                        }
 
-                    val sensorreadings = stringEles[2].split(" ")
+                        if (stringEles.size < 3) {
+                            engine.warning("Skipped msg: " + msg, this.nodename)
+                            return
+                        }
 
-                    var readingname: String
-                    var reading : String
-                    var readingUnit = ""
+                        //val sensordevice = stringEles[0]
+                        val sensorname = stringEles[1]
 
-                    var i = 0
+                        val sensorreadings = stringEles[2].split(" ")
+
+                        var readingname: String
+                        var reading: String
+                        var readingUnit = ""
+
+                        var i = 0
 
 
-                    if (sensorreadings.size == 1)
-                        dataOut(hashMapOf("provider" to "fhem",
-                                "sensorname" to sensorname,
-                                "readingname" to "state",
-                                "reading" to sensorreadings[0],
-                                "readingunit" to ""))
-                    else {
-
-                        while (i < sensorreadings.size) {
-                            if (sensorreadings[i].last() == ':')
-                                readingname = sensorreadings[i].dropLast(1)
-                            else {
-                                engine.warning("Skipped msg: " + msg, this.nodename)
-                                break
-                            }
-
-                            i++
-                            if (i < sensorreadings.size)
-                                reading = sensorreadings[i]
-                            else {
-                                engine.warning("Skipped msg: " + msg, this.nodename)
-                                break
-                            }
-                            i++
-
-                            if (i < sensorreadings.size && sensorreadings[i].last() != ':') {
-                                readingUnit = sensorreadings[i]
-                                i++
-                            }
-
-                            dataOut(hashMapOf("provider" to "fhem",
+                        if (sensorreadings.size == 1)
+                            dataOut(
+                                hashMapOf(
+                                    "provider" to "fhem",
                                     "sensorname" to sensorname,
-                                    "readingname" to readingname,
-                                    "reading" to reading,
-                                    "readingunit" to readingUnit))
+                                    "readingname" to "state",
+                                    "reading" to sensorreadings[0],
+                                    "readingunit" to ""
+                                )
+                            )
+                        else {
+
+                            while (i < sensorreadings.size) {
+                                if (sensorreadings[i].last() == ':')
+                                    readingname = sensorreadings[i].dropLast(1)
+                                else {
+                                    engine.warning("Skipped msg: " + msg, this.nodename)
+                                    break
+                                }
+
+                                i++
+                                if (i < sensorreadings.size)
+                                    reading = sensorreadings[i]
+                                else {
+                                    engine.warning("Skipped msg: " + msg, this.nodename)
+                                    break
+                                }
+                                i++
+
+                                if (i < sensorreadings.size && sensorreadings[i].last() != ':') {
+                                    readingUnit = sensorreadings[i]
+                                    i++
+                                }
+
+                                dataOut(
+                                    hashMapOf(
+                                        "provider" to "fhem",
+                                        "sensorname" to sensorname,
+                                        "readingname" to readingname,
+                                        "reading" to reading,
+                                        "readingunit" to readingUnit
+                                    )
+                                )
+                            }
                         }
                     }
                 }

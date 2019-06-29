@@ -82,12 +82,14 @@ class OutMQTT(engine: Engine, name:String) : OutNode(engine,name,0) {
                 messageStr = value.value
 
             if (value.value is HashMap<*,*>) {
-                val valstr = value.value["message"]
+                val valc = value.value as HashMap<String,Any?>
+
+                val valstr = valc["message"]
                 if (valstr is String)
                     messageStr = valstr
 
-                if (value.value.containsKey("topic") && opts.getBoolVal("topicFromData")) {
-                    val topic = value.value["topic"]
+                if (valc.containsKey("topic") && opts.getBoolVal("topicFromData")) {
+                    val topic = valc["topic"]
                     if (topic is String)
                         topicStr = topic
                 }

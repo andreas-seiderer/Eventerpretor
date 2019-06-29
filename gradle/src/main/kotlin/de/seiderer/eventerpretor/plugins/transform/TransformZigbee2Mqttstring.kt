@@ -27,31 +27,35 @@ class TransformZigbee2Mqttstring(engine: Engine, name:String) : TransformNode(en
         if (value != null) {
 
             //is from mqtt; && value.value["topic"] is String
-            if (value.value is HashMap<*,*> && value.value["message"] is String && value.value["topic"] is String) {
-                var msg = value.value["message"]
-                var topic = value.value["topic"]
+            if (value.value is HashMap<*,*>) {
+                val valc = value.value as HashMap<String,Any?>
 
-                if (topic is String)
-                    topic = topic.split("/").last()
+                if (valc["message"] is String && valc["topic"] is String) {
+                    var msg = value.value["message"]
+                    var topic = value.value["topic"]
 
-                if (msg is String) {
-                    val json = issueAdapter.fromJson(msg)
-                    val jsonhm = HashMap<Any, Any>(json)
-                    if (json != null) {
+                    if (topic is String)
+                        topic = topic.split("/").last()
 
-                        for ((key, value) in jsonhm) {
-                            dataOut(
-                                hashMapOf(
-                                    "provider" to "zigbee2mqtt",
-                                    "sensorname" to topic,
-                                    "readingname" to key,
-                                    "reading" to value,
-                                    "readingunit" to ""
+                    if (msg is String) {
+                        val json = issueAdapter.fromJson(msg)
+                        val jsonhm = HashMap<Any, Any>(json)
+                        if (json != null) {
+
+                            for ((key, v) in jsonhm) {
+                                dataOut(
+                                    hashMapOf(
+                                        "provider" to "zigbee2mqtt",
+                                        "sensorname" to topic,
+                                        "readingname" to key,
+                                        "reading" to v,
+                                        "readingunit" to ""
+                                    )
                                 )
-                            )
+                            }
                         }
-                    }
 
+                    }
                 }
             }
         }
