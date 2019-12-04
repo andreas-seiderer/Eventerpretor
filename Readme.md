@@ -116,3 +116,4 @@ Java libraries are located in "gradle/libs". Gradle is not used to download them
 ## Usage in literature
 Parts of this software have been used in the following scientific publication as a part of the prototype:
 * Hannes Ritschel, Andreas Seiderer, Kathrin Janowski, Ilhan Aslan, and Elisabeth André. 2018. Drink-O-Mender: An Adaptive Robotic Drink Adviser. In Proceedings of the 3rd International Workshop on Multisensory Approaches to Human-Food Interaction (MHFI'18). ACM, New York, NY, USA, Article 3, 8 pages. DOI: https://doi.org/10.1145/3279954.3279957 
+* Andreas Seiderer, Ilhan Aslan, Chi Tai Dang, and Elisabeth André. 2019. Indoor air quality and wellbeing-enabling awareness and sensitivity with ambient IoT displays. In European Conference on Ambient Intelligence (pp. 266-282). Springer, Cham.
