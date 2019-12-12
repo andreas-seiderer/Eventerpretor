@@ -120,6 +120,15 @@ class OutTCP(engine: Engine, name:String) : OutNode(engine,name,0) {
                 cmd = value.value
             else if (value.value is Command)
                 cmd = value.value.value
+            else if (value.value is HashMap<*, *> && value.value.containsKey("message")) {
+                val valmsg = value.value["message"]
+                if (valmsg is String)
+                    cmd = valmsg
+                else {
+                    engine.warning("Incompatible data type as input found!", this.nodename)
+                    return
+                }
+            }
             else {
                 engine.warning("Incompatible data type as input found!", this.nodename)
                 return
